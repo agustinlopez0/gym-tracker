@@ -2,9 +2,9 @@
 include "variables.inc";
 
 $mysqli = new mysqli($host, $user, $pass, $base);
-// $mysqli->query("drop table if exists entrenamiento");
-$mysqli->query("drop table if exists ejercicios");
+$mysqli->query("drop table if exists entrenamiento");
 $mysqli->query("drop table if exists pesos");
+$mysqli->query("drop table if exists ejercicios");
 $mysqli->query("drop table if exists musculos");
 
 
