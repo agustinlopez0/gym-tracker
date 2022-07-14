@@ -1,9 +1,12 @@
 <?php
-include "variables.inc";
+include 'headers.php';
 
 $mysqli = new mysqli($host, $user, $pass, $base);
 // $mysqli->query("drop table if exists entrenamiento");
-$res = $mysqli->query("select * from ejercicios");
+$res = $mysqli->query("SELECT * 
+FROM ejercicios E
+JOIN musculos M
+ON E.id_musculo = M.id");
 
 // print_r (json_encode($res));
 
