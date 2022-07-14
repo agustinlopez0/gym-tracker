@@ -1,5 +1,6 @@
 <template>
-  <EjerciciosInput msg="Welcome to Your Vue.js App"/>
+  <h1>Gym Tracker</h1>
+  <EjerciciosInput />
 </template>
 
 <script>
@@ -14,13 +15,21 @@ export default {
 </script>
 
 <style>
-  /* *{
+  *{
     padding: 0;
     margin: 0
-  } */
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  }
+
+  h1{
+    text-align: center;
+    padding: 20px 0 40px;
+  }
+
+  #app {
+    margin: none;
+    background-color: rgb(250, 250, 250);
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 </style>

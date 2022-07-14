@@ -61,8 +61,7 @@ $mysqli->query("insert into musculos(nombre_musculo)
             ('Trapecio'),
             ('Hombros'),
             ('Bíceps'),
-            ('Tríceps'),
-            ('Abdominales')
+            ('Tríceps')
 ");
 
 $mysqli->query("insert into ejercicios(nombre_ejercicio, id_musculo)
