@@ -60,6 +60,7 @@
         <li>ejercicio</li>
       </ul> -->
     </section>
+    <br><br><br><br>
     <h1>Ejercicios</h1>
     {{ejercicios}}
     <h1>Musculos</h1>
@@ -81,15 +82,13 @@ export default {
   },
   data(){
     return{
-      ejercicios: [],
+      ejercicios: 'CARGANDO',
       musculos: [],
       pesos: [],
       BASE_URL: 'http://localhost/gym-tracker/API/'
     }
   },
   async mounted(){
-    // this.events = await this.getDataEvents()
-    // this.getEjercicios()
     this.ejercicios = JSON.parse(await this.getEjercicios())
     this.pesos      = JSON.parse(await this.getPesos()) 
     this.musculos   = JSON.parse(await this.getMusculos()) 

@@ -15,5 +15,7 @@ while($row = $res->fetch_array(MYSQLI_ASSOC))
 {
     $rows[]=$row;
 }
+
+
 echo json_encode($rows);
 ?>

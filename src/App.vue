@@ -1,5 +1,4 @@
 <template>
-  <h1>Gym Tracker</h1>
   <EjerciciosInput msg="Welcome to Your Vue.js App"/>
 </template>
 
