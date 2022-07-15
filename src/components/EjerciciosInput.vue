@@ -40,8 +40,8 @@ export default {
         };
     },
     async mounted() {
-        this.ejercicios = JSON.parse(await this.getEjercicios());
-        this.musculos = JSON.parse(await this.getMusculos());
+        this.ejercicios = await this.getEjercicios();
+        this.musculos = await this.getMusculos();
         this.newLog = {
             date: this.getDate(),
             id_ejercicio: undefined,
@@ -58,18 +58,22 @@ export default {
                 method: "GET",
                 redirect: "follow",
             };
-            let res = await fetch(BASE_URL + "get_ejercicios.php", requestOptions);
-            let res2 = res.text();
-            return res2;
+            let response = await fetch(BASE_URL + "get_ejercicios.php", requestOptions)
+                .then(response => response.text())
+                .then(result => JSON.parse(result))
+                .catch(error => console.log('error', error));
+            return response
         },
         async getMusculos() {
             var requestOptions = {
                 method: "GET",
                 redirect: "follow",
             };
-            let res = await fetch(BASE_URL + "get_musculos.php", requestOptions);
-            let res2 = res.text();
-            return res2;
+            let response = await fetch(BASE_URL + "get_musculos.php", requestOptions)
+                .then(response => response.text())
+                .then(result => JSON.parse(result))
+                .catch(error => console.log('error', error));
+            return response
         },
         filterEjercicios(ejercicios, musculo) {
             return ejercicios.filter((x) => x.id_musculo == musculo.id);

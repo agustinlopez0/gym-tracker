@@ -14,8 +14,12 @@ $year = filter_var($json->date->year, FILTER_SANITIZE_STRING);
 $id_ejercicio = filter_var($json->id_ejercicio, FILTER_SANITIZE_NUMBER_INT);
 $peso = filter_var($json->peso, FILTER_SANITIZE_NUMBER_INT);
 
-$mysqli->query("insert into entrenamiento(id_ejercicio, peso, dia, fecha, mes, anio) 
+if (!$mysqli->query("insert into entrenamiento(id_ejercicio, peso, dia, fecha, mes, anio) 
     value ('$id_ejercicio', '$peso', '$day', '$date', '$month', '$year')  
-");
+")
+) die('ERROR');
+
+echo 'bien';
+
 
 ?>

@@ -10,6 +10,7 @@
                 <div class="card-content">
                     <p id="confirmar">
                         <span>¿Confirmar?</span>
+                        {{selectedWeigth}}
                     </p>
 
                     <p>
@@ -45,7 +46,8 @@ const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
 export default {
   name: 'LogButton',
   props: {
-    log: Object
+    log: Object,
+    selectedWeigth: Array
   },
   data(){
     return{
@@ -60,16 +62,18 @@ export default {
         var raw = JSON.stringify(this.log);
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
 
         fetch(BASE_URL + "post_entrenamiento.php", requestOptions)
-        .then(alert('Listo ;)'))
-        .then(this.showConfirm = false)
-        .catch(error => console.log('error', error));
+            .then(alert('Listo ;)'))
+            .then(this.showConfirm = false)
+            .then()
+            .catch(error => alert(error));
+
     }
   }
 }
