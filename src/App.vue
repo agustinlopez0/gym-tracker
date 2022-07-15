@@ -4,6 +4,7 @@
 </template>
 
 <script>
+
 import EjerciciosInput from './components/EjerciciosInput.vue'
 
 export default {
