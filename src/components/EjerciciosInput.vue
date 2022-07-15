@@ -1,6 +1,15 @@
 <template>
   <section id="main">
     {{newLog}}
+    <hr>
+    Value:
+    {{selectedWeigthValue}}
+    <hr>
+    Index:
+    {{selectedWeigthIndex}}
+    <hr>
+    Weigth:
+    {{selectedWeigth}}
     <!-- <h1>{{now.day}} {{now.date}} de {{now.month}} {{now.year}}</h1> -->
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
       <h2 class="musculo-titulo">
@@ -10,7 +19,8 @@
         <li v-for="ejercicio in filterEjercicios(ejercicios, musculo)" 
             :key="ejercicio">
           {{ejercicio.nombre_ejercicio}}
-          <input type="number" :name="ejercicio.id" v-model="newLog.peso[i]" :id="i">
+          <input type="number" v-model="selectedWeigth[ejercicio.id]" 
+          :disabled="selectedWeigthIndex != ejercicio.id && selectedWeigthValue != null">
         </li>
       </ul>
     </article>
@@ -42,6 +52,7 @@ export default {
       musculos: [],
       pesos: [],
       newLog: {},
+      selectedWeigth: [],
     }
   },
   async mounted(){
@@ -51,7 +62,7 @@ export default {
     this.newLog     = {
       date: this.getDate(),
       ejercicio: undefined,
-      peso: []
+      peso: undefined
     }
   },
   methods: {
@@ -96,6 +107,25 @@ export default {
       const year = todaysDate.getFullYear()
 
       return {day, date, month, year}
+    }
+  },
+  computed: {
+    selectedWeigthIndex: function(){
+      return this.selectedWeigth.findIndex(x => x != null && x != "")
+    },
+    selectedWeigthValue: function(){
+      return this.selectedWeigth.find(x => x != null && x != "")
+    }
+  },
+  watch: {
+    selectedWeigthValue: function(){
+      if(!this.selectedWeigthValue){
+        this.newLog.peso = undefined
+        this.newLog.ejercicio = undefined
+      } else {
+        this.newLog.peso  = this.selectedWeigthValue
+        this.newLog.ejercicio = this.ejercicios.find(x => x.id == this.selectedWeigthIndex).nombre_ejercicio
+      }
     }
   }
 }
