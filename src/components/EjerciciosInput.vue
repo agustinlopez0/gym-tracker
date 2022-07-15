@@ -9,8 +9,10 @@
         <li v-for="ejercicio in filterEjercicios(ejercicios, musculo)" 
             :key="ejercicio">
           {{ejercicio.nombre_ejercicio}}
-          <input type="number" v-model="selectedWeigth[ejercicio.id]" 
-          :disabled="selectedWeigthIndex != ejercicio.id && selectedWeigthValue != null">
+          <input  type="number" 
+                  @input="limitInput()"
+                  v-model="selectedWeigth[ejercicio.id]" 
+                  :disabled="selectedWeigthIndex != ejercicio.id && selectedWeigthValue != null">
         </li>
       </ul>
     </article>
@@ -48,6 +50,9 @@ export default {
         };
     },
     methods: {
+      prueba(){
+        alert('x')
+      },
         async getEjercicios() {
             var requestOptions = {
                 method: "GET",

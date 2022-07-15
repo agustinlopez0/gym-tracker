@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Gym Tracker</h1>
+    <EjerciciosInput/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import EjerciciosInput from '@/components/EjerciciosInput.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    EjerciciosInput
   }
 }
 </script>
+
+<style scoped>
+  h1{
+    text-align: center;
+    padding-bottom: 40px;
+  }
+
+</style>
