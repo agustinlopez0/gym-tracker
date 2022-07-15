@@ -3,7 +3,7 @@ include 'headers.php';
 
 $mysqli = new mysqli($host, $user, $pass, $base);
 // $mysqli->query("drop table if exists entrenamiento");
-$res = $mysqli->query("SELECT * 
+$res = $mysqli->query("SELECT E.id, E.nombre_ejercicio, E.id_musculo, M.nombre_musculo
 FROM ejercicios E
 JOIN musculos M
 ON E.id_musculo = M.id");

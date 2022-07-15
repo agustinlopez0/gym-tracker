@@ -1,7 +1,7 @@
 <template>
   <section id="main">
+    {{newLog}}
     <!-- <h1>{{now.day}} {{now.date}} de {{now.month}} {{now.year}}</h1> -->
-
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
       <h2 class="musculo-titulo">
         {{musculo.nombre_musculo}}
@@ -10,16 +10,7 @@
         <li v-for="ejercicio in filterEjercicios(ejercicios, musculo)" 
             :key="ejercicio">
           {{ejercicio.nombre_ejercicio}}
-          <select id="pesos" value="">
-            <option 
-              :value="peso.id"
-              :musculo="ejercicio.nombre_musculo"
-              v-for="peso in pesos"
-              :key="peso"
-              >
-              {{peso.peso}}
-            </option>
-          </select>
+          <input type="number" :name="ejercicio.id" v-model="newLog.peso[i]" :id="i">
         </li>
       </ul>
     </article>
@@ -50,14 +41,18 @@ export default {
       ejercicios: 'CARGANDO',
       musculos: [],
       pesos: [],
-      now: {}
+      newLog: {},
     }
   },
   async mounted(){
     this.ejercicios = JSON.parse(await this.getEjercicios())
     this.pesos      = JSON.parse(await this.getPesos()) 
     this.musculos   = JSON.parse(await this.getMusculos()) 
-    this.now        = this.getDate()
+    this.newLog     = {
+      date: this.getDate(),
+      ejercicio: undefined,
+      peso: []
+    }
   },
   methods: {
     async getEjercicios(){
@@ -140,8 +135,9 @@ li{
   
 }
 
-select{
+input[type=number]{
   padding: 6px;
+  width: 50px;
 }
 
 
