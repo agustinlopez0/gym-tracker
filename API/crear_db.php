@@ -3,7 +3,6 @@ include "variables.inc";
 
 $mysqli = new mysqli($host, $user, $pass, $base);
 $mysqli->query("drop table if exists entrenamiento");
-$mysqli->query("drop table if exists pesos");
 $mysqli->query("drop table if exists ejercicios");
 $mysqli->query("drop table if exists musculos");
 
@@ -22,36 +21,22 @@ $mysqli->query("create table if not exists ejercicios (
     FOREIGN KEY (id_musculo) REFERENCES musculos(id)
 )");
 
-$mysqli->query("create table if not exists pesos (
-	id		int not null primary key auto_increment,
-	peso	int not null
-)");
-
 $mysqli->query("create table if not exists entrenamiento (
 	id		        int not null primary key auto_increment,
 	id_ejercicio	int,
-	id_peso	        int,
-    fecha           varchar(60),
-    fecha_sql       date,
-    FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id),
-    FOREIGN KEY (id_peso) REFERENCES pesos(id)
+	peso	        int,
+    dia             varchar(10),
+    fecha           int,
+    mes             varchar(10),
+    anio            varchar(5),
+    FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
 )");
-
-for($i = 4; $i <= 100; $i++){
-    if($i <= 10){
-        $mysqli->query("insert into pesos(peso) value (".$i.")");       
-    } else {
-        if($i % 5 == 0){
-            $mysqli->query("insert into pesos(peso) value (".$i.")");       
-        }
-    }
-}
 
 
 
 $mysqli->query("insert into musculos(nombre_musculo) 
     values  ('Cuádriceps'),
-            ('Isquitibiales'),
+            ('Isquiotibiales'),
             ('Glúteos'),
             ('Pantorrillas'),
             ('Aductor'),

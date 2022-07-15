@@ -33,17 +33,16 @@ export default {
         return {
             ejercicios: [],
             musculos: [],
-            pesos: [],
             newLog: {},
             selectedWeigth: [],
         };
     },
     async mounted() {
         this.ejercicios = JSON.parse(await this.getEjercicios());
-        this.pesos = JSON.parse(await this.getPesos());
         this.musculos = JSON.parse(await this.getMusculos());
         this.newLog = {
             date: this.getDate(),
+            id_ejercicio: undefined,
             ejercicio: undefined,
             peso: undefined
         };
@@ -55,15 +54,6 @@ export default {
                 redirect: "follow",
             };
             let res = await fetch(BASE_URL + "get_ejercicios.php", requestOptions);
-            let res2 = res.text();
-            return res2;
-        },
-        async getPesos() {
-            var requestOptions = {
-                method: "GET",
-                redirect: "follow",
-            };
-            let res = await fetch(BASE_URL + "get_pesos.php", requestOptions);
             let res2 = res.text();
             return res2;
         },
@@ -101,9 +91,11 @@ export default {
             if (!this.selectedWeigthValue) {
                 this.newLog.peso = undefined;
                 this.newLog.ejercicio = undefined;
+                this.newLog.id_ejercicio = undefined;
             }
             else {
                 this.newLog.peso = this.selectedWeigthValue;
+                this.newLog.id_ejercicio = this.selectedWeigthIndex;
                 this.newLog.ejercicio = this.ejercicios.find(x => x.id == this.selectedWeigthIndex).nombre_ejercicio;
             }
         }

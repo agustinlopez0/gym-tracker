@@ -1,11 +1,9 @@
 <?php
-include "variables.inc";
+include 'headers.php';
 
 $mysqli = new mysqli($host, $user, $pass, $base);
-// $mysqli->query("drop table if exists entrenamiento");
 $res = $mysqli->query("select * from entrenamiento");
 
-// print_r (json_encode($res));
 
 $rows = [];
 while($row = $res->fetch_array(MYSQLI_ASSOC))

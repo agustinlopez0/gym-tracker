@@ -13,7 +13,7 @@
                     </p>
 
                     <p>
-                        <!-- {{log}} -->
+                        {{log}}
                         {{log.date.day}}
                         {{log.date.date}}
                         de
@@ -27,7 +27,7 @@
                     </p>
                     <div class="buttons">
                         <button id="cancel-button" @click="showConfirm = false">Cancelar</button>
-                        <button id="accept-button">Aceptar</button>
+                        <button id="accept-button" @click="sendLog()">Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -51,6 +51,11 @@ export default {
   data(){
     return{
       showConfirm: false
+    }
+  },
+  methods: {
+    sendLog(){
+
     }
   }
 }
