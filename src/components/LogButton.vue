@@ -13,7 +13,6 @@
                     </p>
 
                     <p>
-                        {{log}}
                         {{log.date.day}}
                         {{log.date.date}}
                         de
@@ -41,7 +40,7 @@
 </template>
 
 <script>
-// const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
+const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
 
 export default {
   name: 'LogButton',
@@ -55,7 +54,22 @@ export default {
   },
   methods: {
     sendLog(){
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
+        var raw = JSON.stringify(this.log);
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch(BASE_URL + "post_entrenamiento.php", requestOptions)
+        .then(alert('Listo ;)'))
+        .then(this.showConfirm = false)
+        .catch(error => console.log('error', error));
     }
   }
 }
