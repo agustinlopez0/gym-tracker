@@ -27,7 +27,8 @@ import LogButton from './LogButton.vue'
 
 const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
 const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"]
-const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
+// const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
+const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 
 export default {
     name: "EjerciciosInput",

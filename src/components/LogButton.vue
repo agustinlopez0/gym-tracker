@@ -41,7 +41,7 @@
 </template>
 
 <script>
-const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
+const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 
 export default {
   name: 'LogButton',
