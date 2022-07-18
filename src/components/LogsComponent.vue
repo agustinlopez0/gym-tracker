@@ -1,6 +1,9 @@
 <template>
   <section id="main">
+    
+    <DeleteButton v-if="showModal" :deleteLog="deleteLog"/>
     <!-- {{entrenamientos}} -->
+        {{entrenamientos[0]}}
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
       <h2 class="musculo-titulo">
         {{musculo.nombre_musculo}}
@@ -10,13 +13,17 @@
             :key="entrenamiento">
           
           <small>
-            ({{entrenamiento.dia}} {{entrenamiento.fecha}} de {{entrenamiento.mes}} {{entrenamiento.anio}})
+            {{formatDate(entrenamiento)}}
+            <!-- ({{entrenamiento.dia}} {{entrenamiento.fecha}} de {{entrenamiento.mes}} {{entrenamiento.anio}}) -->
           </small>
           <strong>
             {{entrenamiento.peso}}kg
           </strong>
           <span>
             {{entrenamiento.nombre_ejercicio}}
+          </span>
+          <span id="delete" @click="openDeleteLog(entrenamiento)">
+            <img src="@/assets/delete.png" height="15">
           </span>
           <!-- <input  type="number" 
                   @input="limitInput()"
@@ -32,7 +39,10 @@
 </template>
 
 <script>
+import DeleteButton from './DeleteButton.vue'
+
 const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
+const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"]
 
 export default {
     name: "EjerciciosInput",
@@ -40,6 +50,8 @@ export default {
         return {
             entrenamientos: [],
             musculos: [],
+            showModal: false,
+            deleteLog: {}
         };
     },
     async mounted() {
@@ -73,8 +85,25 @@ export default {
         },
         filterEntrenamientos(entrenamientos, musculo){
             return entrenamientos.filter((x) => x.id_musculo == musculo.id);
+        },
+        formatDate(e){
+          let mesN = (months.findIndex(x => x == e.mes) + 1).toString()
+          if(mesN.length == 1){
+            mesN = "0" + mesN
+          } 
+          let fechaN = e.fecha
+          if(fechaN.length == 1){
+            fechaN = "0" + fechaN
+          } 
+          return `${e.dia} ${fechaN}/${mesN}`
+        },
+        openDeleteLog(x){
+          this.deleteLog = x
+          this.deleteLog.formatedDate = this.formatDate(this.deleteLog)
+          this.showModal = true
         }
-    }
+    },
+    components: { DeleteButton }
 }
 </script>
 
@@ -105,7 +134,7 @@ ul{
 
 li{
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 2fr .1fr;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
@@ -118,5 +147,15 @@ input[type=number]{
   width: 50px;
 }
 
+#delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid rgb(218, 116, 116); */
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgb(245, 52, 52);
+}
 
 </style>
