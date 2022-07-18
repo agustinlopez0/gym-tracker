@@ -3,7 +3,7 @@
     
     <DeleteButton v-if="showModal" :deleteLog="deleteLog"/>
     <!-- {{entrenamientos}} -->
-        {{entrenamientos[0]}}
+        <!-- {{entrenamientos[0]}} -->
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
       <h2 class="musculo-titulo">
         {{musculo.nombre_musculo}}

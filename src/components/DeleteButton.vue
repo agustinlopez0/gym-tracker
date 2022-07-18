@@ -14,7 +14,7 @@
 
                     <p>
                         <!-- {{deleteLog}} -->
-                        {{deleteLog.dia}}
+                        <!-- {{deleteLog.dia}} -->
                         {{deleteLog.fecha}}
                         de
                         {{deleteLog.mes}}
@@ -27,7 +27,7 @@
                     </p>
                     <div class="buttons">
                         <button id="cancel-button" @click="showConfirm = false">Cancelar</button>
-                        <button id="accept-button" @click="deleteLog()">Aceptar</button>
+                        <button id="accept-button" @click="deleteLogF()">Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -54,6 +54,27 @@ export default {
     }
   },
   methods: {
+    deleteLogF(){
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "id": this.deleteLog.id
+        });
+
+        var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch(BASE_URL + "delete_entrenamiento.php", requestOptions)
+            .then(alert('Listo ;)'))
+            .then(location.reload())
+            .then()
+            .catch(error => alert(error));
+    },
     sendLog(){
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
