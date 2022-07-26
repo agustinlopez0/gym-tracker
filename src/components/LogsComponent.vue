@@ -58,7 +58,7 @@ export default {
     },
     async mounted() {
         this.entrenamientos = await this.getEntrenamientos()
-        // this.entrenamientos = this.entrenamientos.sort(x.)
+        this.entrenamientos = this.entrenamientos.sort( (x, y) =>  x.id - y.id)
         this.musculos = await this.getMusculos()
     },
     methods: {

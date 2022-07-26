@@ -83,3 +83,25 @@ $mysqli->query("insert into ejercicios(nombre_ejercicio, id_musculo)
 
 
 ?>
+
+
+insert into ejercicios(nombre_ejercicio, id_musculo)
+    values  ('Búlgaras', 1),
+            ('Despegues', 1),
+            ('Pistols Cajón', 1),
+            ('Polea', 2),
+            ('Peso muerto sumo', 3),
+            ('Elevación cadera máquina', 3),
+            ('Estocadas cam', 3),
+            ('Suelo 1p', 4),
+            ('Apertura', 7),
+            ('Pecho plano con mancuernas', 7),
+            ('Toma neutra', 8),
+            ('Remo T', 8),
+            ('Remo polea baja', 8),
+            ('Pullover', 8),
+            ('Palomas', 10),
+            ('Press Arnold', 10),
+            ('Landmine', 10),
+            ('Barra', 11),
+            ('Transnuca con mancuernas', 12)

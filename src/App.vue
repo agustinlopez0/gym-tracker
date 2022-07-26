@@ -22,7 +22,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #eee;
+  text-shadow: 1px 1px 10px rgba(162, 0, 255, 1);
+  /* color: #8916f5;
+  text-shadow: 1px 1px 20px rgba(255, 255, 255, .2); */
+  background-color: #111;
 }
 
 nav {
@@ -31,10 +35,13 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
+  text-shadow: none;
 }
 
 nav a.router-link-exact-active {
   color: #42b983;
+  /* text-shadow: 1px 1px 10px rgb(245, 199, 199); */
+
 }
 </style>
