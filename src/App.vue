@@ -4,6 +4,8 @@
 </template>
 
 <script>
+
+
 import MyNavbar from './components/shared/MyNavbar.vue'
 export default {
     components: { MyNavbar }

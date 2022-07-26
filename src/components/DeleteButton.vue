@@ -41,12 +41,12 @@
 </template>
 
 <script>
-const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 
 export default {
   name: 'LogButton',
   props: {
     deleteLog: Object,
+    BASE_URL: String
   },
   data(){
     return{
@@ -69,7 +69,7 @@ export default {
             redirect: 'follow'
         };
 
-        fetch(BASE_URL + "delete_entrenamiento.php", requestOptions)
+        fetch(this.BASE_URL + "delete_entrenamiento.php", requestOptions)
             .then(alert('Listo ;)'))
             .then(location.reload())
             .then()
@@ -88,7 +88,7 @@ export default {
             redirect: 'follow'
         };
 
-        fetch(BASE_URL + "post_entrenamiento.php", requestOptions)
+        fetch(this.BASE_URL + "post_entrenamiento.php", requestOptions)
             .then(alert('Listo ;)'))
             .then(this.showConfirm = false)
             .then()

@@ -1,5 +1,5 @@
 <template>
-  <LogButton :log="newLog" v-if="selectedWeigthValue"/>
+  <LogButton :log="newLog" :BASE_URL="BASE_URL" v-if="selectedWeigthValue"/>
   <section id="main">
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
       <h2 class="musculo-titulo">
@@ -27,11 +27,12 @@ import LogButton from './LogButton.vue'
 
 const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
 const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"]
-// const BASE_URL = 'http://192.168.0.250/gym-tracker/API/'
-const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 
 export default {
     name: "EjerciciosInput",
+    props:{
+      BASE_URL: String
+    },
     data() {
         return {
             ejercicios: [],
@@ -59,7 +60,7 @@ export default {
                 method: "GET",
                 redirect: "follow",
             };
-            let response = await fetch(BASE_URL + "get_ejercicios.php", requestOptions)
+            let response = await fetch(this.BASE_URL + "get_ejercicios.php", requestOptions)
                 .then(response => response.text())
                 .then(result => JSON.parse(result))
                 .catch(error => console.log('error', error));
@@ -70,7 +71,7 @@ export default {
                 method: "GET",
                 redirect: "follow",
             };
-            let response = await fetch(BASE_URL + "get_musculos.php", requestOptions)
+            let response = await fetch(this.BASE_URL + "get_musculos.php", requestOptions)
                 .then(response => response.text())
                 .then(result => JSON.parse(result))
                 .catch(error => console.log('error', error));

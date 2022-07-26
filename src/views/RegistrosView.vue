@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Gym Tracker</h1>
-    <LogsComponent/>
+    <LogsComponent :BASE_URL="BASE_URL"/>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   name: 'HomeView',
   components: {
     LogsComponent
+  },
+  data(){
+    return {
+      BASE_URL: 'http://190.246.235.191/gym-tracker/API/'
+    }
   }
 }
 </script>

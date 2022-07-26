@@ -1,7 +1,7 @@
 <template>
   <section id="main">
     
-    <DeleteButton v-if="showModal" :deleteLog="deleteLog"/>
+    <DeleteButton v-if="showModal" :BASE_URL="BASE_URL" :deleteLog="deleteLog"/>
     <!-- {{entrenamientos}} -->
         <!-- {{entrenamientos[0]}} -->
     <article class="musculo" v-for="musculo in musculos" :key="musculo">
@@ -41,7 +41,6 @@
 <script>
 import DeleteButton from './DeleteButton.vue'
 
-const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"]
 
 export default {
@@ -53,6 +52,9 @@ export default {
             showModal: false,
             deleteLog: {}
         };
+    },
+    props:{
+      BASE_URL: String
     },
     async mounted() {
         this.entrenamientos = await this.getEntrenamientos()
@@ -66,7 +68,7 @@ export default {
                 redirect: 'follow'
             };
 
-            let response = await fetch(BASE_URL + "get_entrenamiento.php", requestOptions)
+            let response = await fetch(this.BASE_URL + "get_entrenamiento.php", requestOptions)
                 .then(response => response.text())
                 .then(result => JSON.parse(result))
                 .catch(error => console.log('error', error));
@@ -77,7 +79,7 @@ export default {
                 method: "GET",
                 redirect: "follow",
             };
-            let response = await fetch(BASE_URL + "get_musculos.php", requestOptions)
+            let response = await fetch(this.BASE_URL + "get_musculos.php", requestOptions)
                 .then(response => response.text())
                 .then(result => JSON.parse(result))
                 .catch(error => console.log('error', error));

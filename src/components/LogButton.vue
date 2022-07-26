@@ -41,13 +41,13 @@
 </template>
 
 <script>
-const BASE_URL = 'http://190.193.53.186/gym-tracker/API/'
 
 export default {
   name: 'LogButton',
   props: {
     log: Object,
-    selectedWeigth: Array
+    selectedWeigth: Array,
+    BASE_URL: String
   },
   data(){
     return{
@@ -68,7 +68,7 @@ export default {
             redirect: 'follow'
         };
 
-        fetch(BASE_URL + "post_entrenamiento.php", requestOptions)
+        fetch(this.BASE_URL + "post_entrenamiento.php", requestOptions)
             .then(alert('Listo ;)'))
             .then(this.showConfirm = false)
             .then()
