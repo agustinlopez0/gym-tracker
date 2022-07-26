@@ -27,6 +27,7 @@ export default {
   /* color: #8916f5;
   text-shadow: 1px 1px 20px rgba(255, 255, 255, .2); */
   background-color: #111;
+  min-height: 100vh;
 }
 
 nav {

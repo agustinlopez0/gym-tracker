@@ -167,7 +167,8 @@ input[type=number]{
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: rgb(245, 52, 52);
+  background-color: rgb(255, 0, 0);
+  opacity: .7;
 }
 
 </style>
