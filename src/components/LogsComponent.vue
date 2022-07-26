@@ -58,7 +58,6 @@ export default {
     },
     async mounted() {
         this.entrenamientos = await this.getEntrenamientos()
-        this.entrenamientos = this.entrenamientos.sort( (x, y) =>  x.id - y.id)
         this.musculos = await this.getMusculos()
     },
     methods: {
@@ -86,6 +85,17 @@ export default {
             return response
         },
         filterEntrenamientos(entrenamientos, musculo){
+
+            // entrenamientos = entrenamientos.sort( (x, y) =>  x.nombre_ejercicio > y.nombre_ejercicio ? 1 : -1)
+            entrenamientos = entrenamientos.sort( (x, y) =>  {
+              if(x.nombre_ejercicio > y.nombre_ejercicio)
+                return 1
+                else if (x.nombre_ejercicio < y.nombre_ejercicio)
+                  return -1
+                else
+                  return x.id - y.id
+            })
+
             return entrenamientos.filter((x) => x.id_musculo == musculo.id);
         },
         formatDate(e){
