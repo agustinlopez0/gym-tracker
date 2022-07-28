@@ -153,6 +153,7 @@ input[type=number]{
   padding: 6px;
   width: 50px;
   background-color: black;
+  color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.281);
 }
 
