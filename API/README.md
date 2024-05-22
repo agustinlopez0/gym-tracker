@@ -2,7 +2,7 @@
 ---
 ## variables.inc
 ```
-<php?
+<?php
 
 $host = "localhost"; // Nombre del host donde se encuentra MySQL
 $user = "usuario_mysql"; // Nombre de usuario de MySQL
