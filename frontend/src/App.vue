@@ -23,10 +23,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #eee;
-  text-shadow: 1px 1px 10px rgba(162, 0, 255, 1);
-  /* color: #8916f5;
-  text-shadow: 1px 1px 20px rgba(255, 255, 255, .2); */
-  background-color: #111;
+  /* text-shadow: 1px 1px 10px rgba(162, 0, 255, 1); */
+  /* color: #8916f5; */
+  /* text-shadow: 1px 1px 20px rgba(255, 255, 255, .2); */
+  background-color: #1b1b1b;
   min-height: 100vh;
 }
 
